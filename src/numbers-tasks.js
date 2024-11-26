@@ -231,8 +231,16 @@ function isPrime(/* n */) {
  *   toNumber(42, 0) => 42
  *   toNumber(new Number(42), 0) => 42
  */
-function toNumber(/* value, def */) {
-  throw new Error('Not implemented');
+function toNumber(value, def) {
+  let result;
+  if (value === null) {
+    result = def;
+  } else if (Number.isNaN(+value) === true) {
+    result = def;
+  } else if (typeof +value === 'number') {
+    result = +value;
+  }
+  return result;
 }
 
 /**
@@ -299,8 +307,15 @@ function getSumToN(n) {
  *   202 => 4  // (2+0+2)
  *   5   => 5  // 5
  */
-function getSumOfDigits(/* num */) {
-  throw new Error('Not implemented');
+function getSumOfDigits(num) {
+  const str = num.toString();
+  let i = 0;
+  let result = 0;
+  while (i < str.length) {
+    result += +str[i];
+    i += 1;
+  }
+  return result;
 }
 
 /**
@@ -589,8 +604,8 @@ function getMaxNumber(firstNumber, secondNumber) {
  * -5, 0 => -5 | -4 | -3 | -2 | -1 | 0
  * -1, 1 => -1 | 0 | 1
  */
-function getRandomInteger(/* min, max */) {
-  throw new Error('Not implemented');
+function getRandomInteger(min, max) {
+  return Math.floor(Math.random() * (max - min) + min);
 }
 
 /**
